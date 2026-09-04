@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Currículo público de estudante de Engenharia da Computação e desenvolvedor front-end em formação."
+    />
+    <title>Currículo | Desenvolvedor Front-end em formação</title>
+    <style>
+      :root {
+        --bg: #2b2b2b;
+        --surface: #3c3f41;
+        --soft: #323232;
+        --text: #f2f2f2;
+        --muted: #b8b8b8;
+        --purple: #c792ea;
+        --orange: #ffc66d;
+        --line: #55585a;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        min-width: 320px;
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Courier New", Courier, monospace;
+        line-height: 1.6;
+      }
+      .curriculo {
+        width: min(100% - 32px, 980px);
+        margin: auto;
+        padding: 42px 0 56px;
+      }
+      .cabecalho {
+        padding-bottom: 24px;
+        border-bottom: 2px solid var(--purple);
+      }
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--orange);
+        font-size: 0.78rem;
+        font-weight: bold;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        color: var(--purple);
+        line-height: 1.2;
+      }
+      h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+      }
+      h2 {
+        font-size: clamp(1.25rem, 3vw, 1.65rem);
+      }
+      h3 {
+        color: var(--orange);
+        font-size: 1rem;
+      }
+      .cargo {
+        margin: 10px 0 0;
+        color: var(--muted);
+      }
+      .secao {
+        padding: 28px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .secao > h2 {
+        margin-bottom: 14px;
+      }
+      p {
+        margin: 0;
+      }
+      ul {
+        margin: 0;
+        padding-left: 22px;
+      }
+      li + li {
+        margin-top: 6px;
+      }
+      .formacao {
+        display: grid;
+        gap: 4px;
+        color: var(--muted);
+      }
+      .formacao strong {
+        color: var(--text);
+      }
+      .projetos {
+        display: grid;
+        gap: 16px;
+      }
+      .projeto {
+        padding-left: 16px;
+        border-left: 3px solid var(--orange);
+      }
+      .projeto h3 {
+        margin-bottom: 5px;
+      }
+      .projeto p {
+        color: var(--muted);
+      }
+      .subtitulo {
+        margin: 22px 0 12px;
+        color: var(--orange);
+        font-size: 0.95rem;
+        font-weight: bold;
+      }
+      .soft-skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 0;
+        list-style: none;
+      }
+      .soft-skills li {
+        margin: 0;
+        padding: 5px 9px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+      .hard-skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .skill-card {
+        display: inline-flex;
+        flex: 1 1 150px;
+        min-width: 150px;
+        min-height: 174px;
+        position: relative;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        overflow: hidden;
+        padding: 18px 12px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--surface);
+        color: var(--text);
+        text-align: center;
+        text-decoration: none;
+        transition:
+          border-color 0.16s,
+          box-shadow 0.16s,
+          transform 0.16s;
+      }
+      .skill-card::after {
+        position: absolute;
+        inset: 0;
+        border: 2px solid transparent;
+        border-radius: inherit;
+        content: "";
+        pointer-events: none;
+        transition: border-color 0.16s;
+      }
+      .skill-card.is-hovered,
+      .skill-card:hover,
+      .skill-card:focus-visible {
+        border-color: var(--purple);
+        box-shadow: 0 0 0 4px rgb(199 146 234 / 16%);
+        color: var(--text);
+        outline: none;
+        transform: translateY(-3px);
+      }
+      .skill-card.is-hovered::after,
+      .skill-card:hover::after,
+      .skill-card:focus-visible::after {
+        border-color: var(--purple);
+      }
+      .skill-icon {
+        display: grid;
+        width: 48px;
+        height: 48px;
+        place-items: center;
+        border-radius: 10px;
+        background: var(--soft);
+      }
+      .skill-icon img,
+      .skill-icon svg {
+        width: 31px;
+        height: 31px;
+        object-fit: contain;
+      }
+      .skill-name {
+        font-size: 0.96rem;
+        font-weight: bold;
+      }
+      .skill-description {
+        color: var(--muted);
+        font-size: 0.72rem;
+        line-height: 1.35;
+      }
+      .rodape {
+        padding-top: 24px;
+        text-align: center;
+      }
+      .home {
+        color: var(--muted);
+        text-decoration: none;
+      }
+      @media (max-width: 620px) {
+        .curriculo {
+          width: min(100% - 24px, 980px);
+          padding-top: 28px;
+        }
+        .hard-skills {
+          gap: 10px;
+        }
+        .skill-card {
+          flex-basis: calc(50% - 5px);
+          min-width: 0;
+          min-height: 160px;
+        }
+      }
+      @media (max-width: 390px) {
+        .skill-card {
+          flex-basis: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main id="inicio" class="curriculo">
+      <header class="cabecalho">
+        <p class="eyebrow">Currículo profissional</p>
+        <h1>Desenvolvedor Front-end em formação</h1>
+        <p class="cargo">
+          Estudante de Engenharia da Computação | Rio de Janeiro, Brasil
+        </p>
+      </header>
+      <section class="secao" aria-labelledby="sobre">
+        <h2 id="sobre">Sobre</h2>
+        <p>
+          Estudante de Engenharia da Computação pela Universidade Veiga de
+          Almeida, atualmente no 8º período, em busca de oportunidade de estágio
+          como desenvolvedor front-end.
+        </p>
+      </section>
+      <section class="secao" aria-labelledby="formacao">
+        <h2 id="formacao">Formação acadêmica</h2>
+        <div class="formacao">
+          <strong
+            >Engenharia da Computação — Universidade Veiga de Almeida</strong
+          ><span>Ingresso: 2023.1 | Conclusão prevista: 2027.2</span>
+        </div>
+      </section>
+      <section class="secao" aria-labelledby="idiomas">
+        <h2 id="idiomas">Idiomas</h2>
+        <ul>
+          <li>Português — nativo</li>
+          <li>Inglês — técnico</li>
+        </ul>
+      </section>
+      <section class="secao" aria-labelledby="projetos">
+        <h2 id="projetos">Projetos e experiências acadêmicas</h2>
+        <div class="projetos">
+          <article class="projeto">
+            <h3>Workshop acadêmico — 5º período</h3>
+            <p>
+              Colaborei em uma proposta para a Lagoa de Marapendi com
+              tecnologias estudadas na disciplina de Engenharia e Manutenção de
+              Projetos.
+            </p>
+          </article>
+          <article class="projeto">
+            <h3>Competição de robótica — 6º período</h3>
+            <p>
+              Participei de competição da RoboCore no Rio Innovation Week 2024,
+              montando e programando em C++ e Arduino um carrinho autônomo.
+            </p>
+          </article>
+          <article class="projeto">
+            <h3>CRUD e visualização de dados — 7º período</h3>
+            <p>
+              Desenvolvimento em equipe de aplicação CRUD em Python para leitura
+              de dados e geração de gráficos, com Qt Design, Figma e MySQL.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section class="secao" aria-labelledby="competencias">
+        <h2 id="competencias">Competências</h2>
+        <p class="subtitulo">Soft skills</p>
+        <ul class="soft-skills">
+          <li>Organização</li>
+          <li>Trabalho em equipe</li>
+          <li>Engajamento com tecnologia</li>
+          <li>Comunicação assertiva</li>
+          <li>Boas práticas e código limpo</li>
+          <li>Comunicação sem vícios de linguagem</li>
+        </ul>
+        <p class="subtitulo">Hard skills</p>
+        <div class="hard-skills" aria-label="Hard skills">
+          <a
+            class="skill-card"
+            href="https://www.python.org/"
+            target="_blank"
+            rel="noreferrer"
+            ><span class="skill-icon"
+              ><img
+                src="https://cdn.simpleicons.org/python/FFD43B"
+                alt="Ícone do Python" /></span
+            ><span class="skill-name">Python básico</span
+            ><small class="skill-description"
+              >Automação, lógica e aplicações.</small
+            ></a
+          ><a
+            class="skill-card"
+            href="https://visualg3.com.br/"
+            target="_blank"
+            rel="noreferrer"
+            ><span class="skill-icon"
+              ><img
+                src="https://api.iconify.design/mdi:code-braces.svg?color=%23ffc66d"
+                alt="Ícone de código" /></span
+            ><span class="skill-name">Portugol</span
+            ><small class="skill-description"
+              >Aprendizado de algoritmos e lógica.</small
+            ></a
+          ><a
+            class="skill-card"
+            href="https://www.mysql.com/"
+            target="_blank"
+            rel="noreferrer"
+            ><span class="skill-icon"
+              ><img
+                src="https://cdn.simpleicons.org/mysql/4479A1"
+                alt="Ícone do MySQL" /></span
+            ><span class="skill-name">MySQL básico</span
+            ><small class="skill-description"
+              >Armazenamento e consultas a dados.</small
+            ></a
+          ><a
+            class="skill-card"
+            href="https://developer.mozilla.org/docs/Web/HTML"
+            target="_blank"
+            rel="noreferrer"
+            ><span class="skill-icon"
+              ><img
+                src="https://cdn.simpleicons.org/html5/E34F26"
+                alt="Ícone do HTML" /></span
+            ><span class="skill-name">HTML</span
+            ><small class="skill-description"
+              >Estrutura e semântica de páginas.</small
+            ></a
+          ><a
+            class="skill-card"
+            href="https://developer.mozilla.org/docs/Web/CSS"
+            target="_blank"
+            rel="noreferrer"
+            ><span class="skill-icon"
+              ><img
+                src="https://cdn.simpleicons.org/css/1572B6"
+                alt="Ícone do CSS" /></span
+            ><span class="skill-name">CSS</span
+            ><small class="skill-description"
+              >Estilo e responsividade visual.</small
+            ></a
+          ><a
+            class="skill-card"
+            href="https://developer.mozilla.org/docs/Web/JavaScript"
+            target="_blank"
+            rel="noreferrer"
+            ><span class="skill-icon"
+              ><img
+                src="https://cdn.simpleicons.org/javascript/F7DF1E"
+                alt="Ícone do JavaScript" /></span
+            ><span class="skill-name">JavaScript</span
+            ><small class="skill-description"
+              >Interações e lógica no navegador.</small
+            ></a
+          ><a
+            class="skill-card"
+            href="https://react.dev/"
+            target="_blank"
+            rel="noreferrer"
+            ><span class="skill-icon"
+              ><img
+                src="https://cdn.simpleicons.org/react/61DAFB"
+                alt="Ícone do React" /></span
+            ><span class="skill-name">React</span
+            ><small class="skill-description"
+              >Interfaces por componentes.</small
+            ></a
+          ><a
+            class="skill-card"
+            href="https://www.microsoft.com/microsoft-365"
+            target="_blank"
+            rel="noreferrer"
+            ><span class="skill-icon"
+              ><img
+                src="https://cdn.simpleicons.org/microsoftoffice/D83B01"
+                alt="Ícone do Microsoft Office" /></span
+            ><span class="skill-name">Office</span
+            ><small class="skill-description"
+              >Documentos e apresentações.</small
+            ></a
+          ><a
+            class="skill-card"
+            href="https://www.microsoft.com/microsoft-365/excel"
+            target="_blank"
+            rel="noreferrer"
+            ><span class="skill-icon"
+              ><img
+                src="https://cdn.simpleicons.org/microsoftexcel/217346"
+                alt="Ícone do Excel" /></span
+            ><span class="skill-name">Excel</span
+            ><small class="skill-description"
+              >Planilhas, fórmulas e organização.</small
+            ></a
+          ><a
+            class="skill-card"
+            href="https://git-scm.com/"
+            target="_blank"
+            rel="noreferrer"
+            ><span class="skill-icon"
+              ><img
+                src="https://cdn.simpleicons.org/git/F05032"
+                alt="Ícone do Git" /></span
+            ><span class="skill-name">Git</span
+            ><small class="skill-description"
+              >Versionamento colaborativo de código.</small
+            ></a
+          ><a
+            class="skill-card"
+            href="https://code.visualstudio.com/"
+            target="_blank"
+            rel="noreferrer"
+            ><span class="skill-icon"
+              ><img
+                src="https://cdn.simpleicons.org/visualstudiocode/007ACC"
+                alt="Ícone do Visual Studio Code" /></span
+            ><span class="skill-name">VS Code</span
+            ><small class="skill-description"
+              >Editor para desenvolvimento.</small
+            ></a
+          >
+        </div>
+      </section>
+      <footer class="rodape">
+        <a class="home" href="#inicio">Voltar ao início ↑</a>
+      </footer>
+    </main>
+    <script>
+      const skillIcons = { "Python básico":["Py","#3776ab"], Portugol:["&lt;/&gt;","#ffc66d"], "MySQL básico":["SQL","#4479a1"], HTML:["H5","#e34f26"], CSS:["C3","#1572b6"], JavaScript:["JS","#f7df1e"], React:["R","#61dafb"], Office:["O","#d83b01"], Excel:["X","#217346"], Git:["Git","#f05032"], "VS Code":["VS","#007acc"] };
+      document.querySelectorAll(".skill-card").forEach((card) => {
+        const [label, color] = skillIcons[card.querySelector(".skill-name").textContent.trim()];
+        card.querySelector(".skill-icon").innerHTML = `<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="2" width="44" height="44" rx="9" fill="${color}" /><text x="24" y="29" fill="#fff" font-family="Arial, sans-serif" font-size="${label.length > 2 ? 12 : 16}" font-weight="700" text-anchor="middle">${label}</text></svg>`;
+        card.addEventListener("pointerenter", () =>
+          card.classList.add("is-hovered"),
+        );
+        card.addEventListener("pointerleave", () =>
+          card.classList.remove("is-hovered"),
+        );
+      });
+    </script>
+  </body>
+</html>
+<!-- formatacao no modelo ats, uso de ai nos botoes e na importacao do tema apenas, de resto segue o codigo original -->
